@@ -36,7 +36,7 @@ class CalculatorTest {
     @Test
     fun testErrorCases() {
         val exception = assertThrows<IllegalArgumentException> {
-            calculator.divide(5.0, 0.0)
+            calculator.divide(6.0, 0.0)
         }
         assertEquals("Cannot divide by zero", exception.message)
     }
