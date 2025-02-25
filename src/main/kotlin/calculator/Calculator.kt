@@ -13,6 +13,7 @@ class Calculator {
     }
 
     fun divide(a: Double, b: Double): Double {
+        require(b != 0.0) { "Cannot divide by zero"}
         return a/b
     }
 }

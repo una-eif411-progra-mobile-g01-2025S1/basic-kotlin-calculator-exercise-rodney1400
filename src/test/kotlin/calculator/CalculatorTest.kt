@@ -1,11 +1,17 @@
 package calculator
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class CalculatorTest {
+    private lateinit var calculator: Calculator
 
-    private val calculator = Calculator()
+    @BeforeEach
+    fun setUp() {
+        calculator = Calculator()
+    }
 
     @Test
     fun `addition should return correct result`() {
@@ -25,5 +31,13 @@ class CalculatorTest {
     @Test
     fun `division should return correct result`() {
         assertEquals(2.0, calculator.divide(10.0, 5.0))
+    }
+
+    @Test
+    fun testErrorCases() {
+        val exception = assertThrows<IllegalArgumentException> {
+            calculator.divide(5.0, 0.0)
+        }
+        assertEquals("Cannot divide by zero", exception.message)
     }
 }
